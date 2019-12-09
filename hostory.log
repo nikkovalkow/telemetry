@@ -1,0 +1,600 @@
+    1  +ip a
+    2  sudo apt-get install ip
+    3  sudo apt-get update
+    4  sudo apt-get install ip
+    5  ifconfig
+    6  sudo service sshd ststus
+    7  exit
+    8  ssh
+    9  ssh pi@192.168.100.103
+   10  sodo nano /etc/network/interfaces
+   11  sudo nano /etc/network/interfaces
+   12  sudo nano /etc/dhcpcd.conf 
+   13  ipconfig
+   14  ifconfig
+   15  sudo nano /etc/dhcpcd.conf 
+   16  sudo nano service networking restart
+   17  sudo  service networking restart
+   18  ipconfig
+   19  ifconfig
+   20  +ifconfig
+   21  ifconfig
+   22  ping 8.8.8.8
+   23  sudo apt-get install docker
+   24  docker search ubuntu
+   25  docker 
+   26  curl -fsSL get.docker.com -o get-docker.sh && sh get-docker.sh
+   27  sudo apt-get update
+   28  sudo apt-get install apt-transport-https                        ca-certificates                        software-properties-common
+   29  curl -fsSL https://yum.dockerproject.org/gpg | sudo apt-key add -
+   30  apt-key fingerprint 58118E89F3A912897C070ADBF76221572C52609D
+   31  sudo add-apt-repository        "deb https://apt.dockerproject.org/repo/ \
+   32         raspbian-$(lsb_release -cs) \
+   33         main"
+   34  curl -sSL https://get.docker.com | sh
+   35  sudo systemctl enable docker
+   36  docker run
+   37  docker serach ubuntu
+   38  docker search ubuntu
+   39  curl -sSL https://get.docker.com | sh
+   40  sudo apt-get remove docker-ce
+   41  curl -sSL https://get.docker.com | sh
+   42  sudo systemctl disable docker
+   43  curl -sSL https://get.docker.com | sh
+   44  docker
+   45  docker search ubuntu
+   46  sudo docker search ubuntu
+   47  docker search
+   48  docker search ubuntu
+   49  sudo docker search ubuntu
+   50  sudo docker pull ubuntu
+   51  sudo docker image ls
+   52  sudo docker run ubuntu -it -n Ubuntu1
+   53  sudo docker run -it ubuntu -n Ubuntu1
+   54  sudo docker run -it ubuntu 
+   55  docker container ls
+   56  sudo docker container ls
+   57  sudo docker container attach df71e8eb6b84
+   58  ps
+   59  top
+   60  sodo top
+   61  sudo apt-get install lm-sensors 
+   62  sudo sensors-detect
+   63  sudo service kmod start
+   64  sensors
+   65  sudo sensors
+   66  /opt/vc/bin/vcgencmd measure_temp
+   67  ip a
+   68  cd /usr/local/src/
+   69  wget http://www.no-ip.com/client/linux/noip-duc-linux.tar.gz
+   70  sudo wget http://www.no-ip.com/client/linux/noip-duc-linux.tar.gz
+   71  ls
+   72  tar xf noip-duc-linux.tar.gz 
+   73  sudo tar xf noip-duc-linux.tar.gz 
+   74  ls
+   75  cd noip-2.1.9-1/
+   76  make install
+   77  sudo make install
+   78  sudo nano  /usr/local/etc/no-ip2.conf
+   79  sudo apt-get remove no-ip
+   80  make uninstall
+   81  make clean
+   82  make -n uninstall
+   83  ls
+   84  sudo make uninstall
+   85  make -n install
+   86  cd /usr/local/bin/noip2
+   87  ps
+   88  sudo /usr/local/bin/noip2 -C
+   89  sudo rm /usr/local/bin/noip2
+   90  sudo rm /usr/local/etc/no-ip2.conf
+   91  sudo rm /usr/local/etc/NO-IPalmco0
+   92  sudo rm -r /usr/local/src/noip-2.1.9-1
+   93  sudo rm noip-duc-linux.tar.gz
+   94  cd ..
+   95  ls
+   96  sudo rm noip-duc-linux.tar.gz 
+   97  ls
+   98  s
+   99  sudo rm noip-duc-linux.tar.gz 
+  100  sudo docker container ls
+  101  sudo docker container ls -a
+  102  sudo docker container rm ecstatic_villani
+  103  sudo docker container rm  optimistic_sammet
+  104  sudo docker container rm eloquent_mcclintock
+  105  tail /var/log/syslog
+  106  nano /var/log/syslog
+  107  sudo docker container ls
+  108  sudo docker container ls -a
+  109  docker container run -it ubuntu -n dev
+  110  sudo docker container run -it ubuntu -n dev
+  111  sudo docker container run -it ubuntu -name dev
+  112  sudo docker container run -it ubuntu 
+  113  docker container ls
+  114  sudo docker container ls
+  115  sudo docker container run --help
+  116  sudo docker container ls
+  117  sudo docker container rm dreamy_robinson
+  118  sudo docker container stop dreamy_robinson
+  119  sudo docker container rm dreamy_robinson
+  120  sudo apt-get install mongodb
+  121  netstat
+  122  netstat 
+  123  netstat -l
+  124  telnet
+  125  sudo apt-get install telnet
+  126  telnet 192.168.100.110 27017
+  127  sudo apt-get uninstall mongodb
+  128  sudo apt-get remove mongodb
+  129  netstat -l
+  130  sudo service mongodb stop
+  131  sudo apt-get purge mongodb
+  132  sudo apt-get mongodb-org
+  133  sudo apt-get install  mongodb-org
+  134  sudo apt-get install mongodb
+  135  netstat -l
+  136  sudo service mongodb start
+  137  netstat -l
+  138  mongo
+  139  sudo nano /var/log/mongodb/mongod.log
+  140  cd /var/log/mongodb/
+  141  ls
+  142  ls  -l
+  143  time
+  144  clock
+  145  +ip a
+  146  ipconfig
+  147  ifconfig
+  148  ping ya.ru
+  149  sudo nano /etc/network/interfaces
+  150  sudo nano /etc/dhcp
+  151  sudo nano /etc/dhcpd
+  152  sudo nano /etc/network/interfaces
+  153  sudo nano /etc/dhcpd.conf
+  154  sudo nano /var/run/wpa_supplicant.conf
+  155  sudo nano /var/run/wpa_supplicant
+  156  sudo nano /var/run/wpa_supplicant/wlan0 
+  157  sudo nano /var/run/wpa_supplicant/p2p-dev-wlan0 
+  158  nano /etc/wpa_supplicant/wpa_supplicant.conf 
+  159  cd /etc/wpa_supplicant/
+  160  nano ifupdown.sh 
+  161  cd /etc/network/interfaces.d/
+  162  ls
+  163  cd ..
+  164  ls
+  165  nano interfaces
+  166  cd interfaces.d/
+  167  ls
+  168  cd ..
+  169  cd if-up.d/
+  170  ls
+  171  cd ..
+  172  ifconfig
+  173  nano /etc/dhcpcd.conf
+  174  sudo service networking restart
+  175  ifconfig
+  176  reboot
+  177  +confi
+  178  ipconfig
+  179  ifconfig
+  180  ping 8.8.8.8
+  181  python3
+  182  +df -h
+  183  df -h
+  184  mongo
+  185  mongod
+  186  ping 8.8.8.8
+  187  sudo modprobe w1-gipo
+  188  sudo modprobe w1-gpio
+  189  sudo modprobe w1-term
+  190  sudo modprobe w1-therm
+  191  cd /sys/bus/w1/devices/
+  192  ls
+  193  sudo nano /etc/modules
+  194  reboot
+  195  +cd /sys/bus/w1/devices/
+  196  cd /sys/bus/w1/drivers/w1_slave_driver/
+  197  ls
+  198  cd ..
+  199  cd devices
+  200  ls
+  201  sudo nano /boot/config.txt 
+  202  reboot
+  203  cd /sys/bus/w1/devices/
+  204  cd 28-030c97940c83
+  205  ls
+  206  cat w1_slave 
+  207  +cat /sys/bus/w1/devices/28-030c97940c83
+  208  +cat /sys/bus/w1/devices/28-030c97940c83/w1_slave 
+  209  cat /sys/bus/w1/devices/28-030c97940c83/w1_slave 
+  210  pinout
+  211  cat /sys/bus/w1/devices/28-030c97940c83/w1_slave 
+  212  reboot
+  213  cat /sys/bus/w1/devices/28-030c97940c83/w1_slave 
+  214  cat /sys/bus/w1/devices/28-030c97940c83/w1_slave 
+  215  cd ..
+  216  cd /etc/python3.5/
+  217  ls
+  218  pip3 install dht11
+  219  sudo apt-get install mongodb
+  220  pip3 pymongo
+  221  sudo pip3 install pymongo
+  222  netstat
+  223  sudo service mongodb start
+  224  netstat
+  225  netstat -help
+  226  netstat -l
+  227  netstat -lp
+  228  mongo
+  229  sudo pip3 uninstall pymongo
+  230  sudo apt-get install python3-pymongo
+  231  mongo
+  232  top
+  233  kill 18610
+  234  top
+  235  kill 18697
+  236  sudo nano nohup python3 /home/pi/Documents/sensor-process.py &
+  237  kill 18704
+  238  kill 18671
+  239  mongo
+  240  cd /home/pi/Documents/
+  241  ls
+  242  nohup python3 sensor-process.py &
+  243  top
+  244  sudo nano /etc/profile
+  245  time
+  246  date
+  247  top
+  248  sudo nano /etc/profile
+  249  reboot
+  250  date
+  251  top
+  252  ps
+  253  ps help
+  254  man ps
+  255  ps -e
+  256  ps -e ~ grep python
+  257  ps -e | grep python
+  258  kill 845
+  259  kill 876
+  260  sudo kill 845
+  261  sudo kill 876
+  262  +top
+  263  top
+  264  mongo
+  265  reboot
+  266  +top
+  267  ps -e
+  268  ps -e | grep python
+  269  mongo
+  270  sudo nano /etc/profile
+  271  reboot
+  272  ps -e | grep python
+  273  sudo nano /etc/profile
+  274  crontab -e
+  275  reboot
+  276  date
+  277  ps -e | grep python
+  278  mongo
+  279  vcgencmd measure_temp
+  280  pip3 install bokeh
+  281  sudo pip3 install bokeh
+  282  sudo pip3 install numpy
+  283  sudo pip3 ininstall numpy
+  284  sudo pip3 uninstall numpy
+  285  sudo pip3 uinstall numpy
+  286  sudo pip3 install numpy
+  287  sudo apt-get install libatlas-base-dev
+  288  mongo
+  289  cd /home/pi/Documents/
+  290  ls
+  291  crontab -e
+  292  mongo
+  293  date
+  294  cat /sys/class/thermal/thermal_zone0/temp 
+  295  cat /sys/class/thermal/thermal_zone0/power/
+  296  cat /sys/class/thermal/thermal_zone0/temp 
+  297  mongo
+  298  sudo apt-get update
+  299  sudo ap1 = figure(x_axis_type="datetime", title="Temperature")
+  300  p1.grid.grid_line_alpha=0.3
+  301  p1.xaxis.axis_label = 'Date'
+  302  p1.yaxis.axis_label = 'Temp'
+  303  sudo apt-get install apache2 -y
+  304  sudo apt-get install libapache2-mod-python
+  305  sudo nano /etc/apache2/apache2.conf 
+  306  cd /var/www/html/
+  307  ls
+  308  sudo nano /etc/apache2/apache2.conf 
+  309  sudo nano hello.py
+  310  sudo service apache2 restart
+  311  sudo nano /etc/apache2/apache2.conf 
+  312  sudo apt-get uninstall libapache2-mod-python
+  313  sudo apt-get remove libapache2-mod-python
+  314  sudo apt-get install libpache2-mod-wsgi-py3
+  315  sudo apt-get install libapache2-mod-wsgi-py3
+  316  sudo nano /etc/apache2/apache2.conf 
+  317  ls
+  318  sudo nano index.py
+  319  sudo nano index.wsgi
+  320  sudo service apache2 restart
+  321  sudo nano /etc/apache2/apache2.conf 
+  322  sudo service apache2 restart
+  323  sudo nano /etc/apache2/apache2.conf 
+  324  sudo service apache2 restart
+  325  sudo nano /etc/apache2/apache2.conf 
+  326  sudo a2dismod python
+  327  top
+  328  cd /home/pi/Documents/
+  329  ls
+  330  sodo nano sensor-process.log 
+  331  sudo nano sensor-process.log 
+  332  mongo
+  333  ls
+  334  ps -h
+  335  ps -ha
+  336  ps -help
+  337  ps --help
+  338  ps -lh
+  339  ps -la
+  340  sudo ps -la
+  341  sudo ps -all
+  342  sudo ps all
+  343  ps all
+  344  top
+  345  crontab -e
+  346  reboot
+  347  mongo
+  348  cd /home/pi/Documents/
+  349  ls
+  350  sudo nano sensor-process.log 
+  351  crontab -e
+  352  mongo
+  353  lsusb
+  354  usb-devices
+  355  cd /dev/bus/usb/001/
+  356  ls
+  357  cat 001
+  358  cat 002
+  359  cat 003
+  360  sudo apt-get install gammu
+  361  gammu --identify
+  362  gammu sendsms TEXT +375296799727 -text "Greetz from the pandaboard. Knilluz"
+  363  ip a
+  364  sudo apt-get uninstall docker
+  365  sudo apt-get remove docker
+  366  docker
+  367  docker image show
+  368  docker image ls
+  369  sudo ]docker image ls
+  370  sudo docker image ls
+  371  sudo docker image rm ubuntu
+  372  sudo docker container ls
+  373  sudo docker container 
+  374  sudo apt-get remove docker
+  375  lsusb
+  376  sudo apt-get install ppp usb-modeswitch wvdial
+  377  sudo nano /etc/wvdial.conf 
+  378  wvdial 3gconnect
+  379  sudo wvdial 3gconnect
+  380  ip a
+  381  sudo wvdial 3gconnect
+  382  sudo nano /etc/wvdial.conf 
+  383  sudo ifconfig wlan0 down
+  384  ping 8.8.8.8
+  385  sudo wvdial 3gconnect
+  386  sudo ifconfig wlan0 up
+  387  ip a
+  388  ip a
+  389  route
+  390  ping 10.64.64.64
+  391  ping 8.8.8.8
+  392  route
+  393  ping google.com
+  394  ping ya.ru
+  395  ip a
+  396  ping 8.8.8.8
+  397  sudo apt-get purge docker-engine
+  398  sudo apt-get purge docker
+  399  rm -rf /var/lib/docker
+  400  sudo rm -rf /var/lib/docker
+  401  sudo apt-get purge -y docker-engine docker docker.io docker-ce  
+  402  sudo apt-get autoremove -y --purge docker-engine docker docker.io docker-ce  
+  403  sudo rm -rf /var/lib/docker /etc/docker
+  404  sudo rm /etc/apparmor.d/docker
+  405  sudo groupdel docker
+  406  sudo rm -rf /var/run/docker.sock
+  407  df -dh
+  408  df -h
+  409  mongo
+  410  +mongo
+  411  mongo
+  412  cd /sys/bus/w1/devices/
+  413  ls
+  414  cd 28-03029794645a
+  415  ls
+  416  cat w1_slave 
+  417  cd 28-030c97940c83
+  418  cd ..
+  419  cd 28-030c97940c83
+  420  ls
+  421  cat w1_slave 
+  422  top
+  423  sudo kill 414
+  424  mongo
+  425  +mongo
+  426  mongo
+  427  ping google.com
+  428  ping 8.8.8.8
+  429  sudo crontab -e
+  430  crontab -e
+  431  mongo
+  432  crontab -e
+  433  mongo
+  434  top
+  435  ps -a
+  436  ps -help
+  437  ps -all
+  438  cd /usr/bin/
+  439  ls
+  440  ls | grep python
+  441  cd python3
+  442  cd ..
+  443  cd /var/www/html/
+  444  ls
+  445  sudo nano hello.py 
+  446  history | grep apache
+  447  history | grep log
+  448  crontab -e
+  449  cd /home/pi/Documents/
+  450  ls
+  451  crontab -e
+  452  grep CRON /var/log/syslog
+  453  crontab -e
+  454  ls
+  455  python3 check-internet.py 
+  456  crontab -e
+  457  cd /var/www/html/
+  458  ls
+  459  ls -lr
+  460  cd /home/pi/Documents/
+  461  ls
+  462  sudo python3 graphing.py 
+  463  ip a
+  464  ping 192.168.1.1
+  465  sudo a2enmod cgi
+  466  systemctl restart apache2
+  467  history | grep apache
+  468  sudo nano /etc/apache2/apache2.conf
+  469  systemctl restart apache2
+  470  cd /var/www/html/
+  471  ls
+  472  sudo nano /var/log/apache2/error.log
+  473  ls -lr
+  474  chmod rwx hello.py 
+  475  chmod +x hello.py 
+  476  sudo chmod +x hello.py 
+  477  chmod +x hello.py 
+  478  ls -lr
+  479  sudo chmod +r hello.py 
+  480  ls -lr
+  481  sudo nano /var/log/apache2/error.log
+  482  sudo nano hello.py 
+  483  sudo nano /var/log/apache2/error.log
+  484  sudo nano hello.py 
+  485  python3
+  486  sudo nano /var/log/apache2/error.log
+  487  sudo chmod 644 hello.py 
+  488  sudo nano /var/log/apache2/error.log
+  489  sudo nano /etc/apache2/apache2.conf
+  490  sudo nano /var/log/apache2/error.log
+  491  sudo nano /etc/apache2/apache2.conf
+  492  sudo service apache2 restart
+  493  history | grep apache
+  494  systemctl restart apache2
+  495  systemctl status apache2.service
+  496  sudo nano /etc/apache2/apache2.conf
+  497  systemctl status apache2.service
+  498  systemctl restart apache2
+  499  sudo nano /var/log/apache2/error.log
+  500  chmod +x hello.py 
+  501  sudo chmod +x hello.py 
+  502  ls-lr
+  503  ls -lr
+  504  chmod +x
+  505  chmod +x /var/www/html/
+  506  sudo chmod +x /var/www/html/
+  507  sudo chmod +x /var/www/
+  508  sudo nano /var/log/apache2/error.log
+  509  sudo nano /etc/apache2/apache2.conf
+  510  systemctl restart apache2
+  511  sudo nano /var/log/apache2/error.log
+  512  chmod 755 hello.py 
+  513  sudo chmod 755 hello.py 
+  514  sudo nano /var/log/apache2/error.log
+  515  sudo nano hello.py 
+  516  mv hello.py hello.cgi
+  517  sudo mv hello.py hello.cgi
+  518  sudo mv hello.cgi hello.py
+  519  sudo nano /var/log/apache2/error.log
+  520  sudo nano hello.py 
+  521  sudo nano /var/log/apache2/error.log
+  522  sudo nano hello.py 
+  523  sudo nano /var/log/apache2/error.log
+  524  sudo nano hello.py 
+  525  cp /home/pi/Documents/graphing.py /var/www/html/
+  526  sudo cp /home/pi/Documents/graphing.py /var/www/html/
+  527  sudo chmod 755 graphing.py 
+  528  sudo nano /var/log/apache2/error.log
+  529  ls
+  530  rm sensors.html 
+  531  ls
+  532  sudo rm sensors.html 
+  533  ls
+  534  sudo nano /var/log/apache2/error.log
+  535  cd /home/pi/Documents/
+  536  ls
+  537  sudo python3 graphing.py 
+  538  ip a
+  539  sudo python3 graphing.py 
+  540  cd /home/pi/Documents/
+  541  ls
+  542  sudo python graphing.py 
+  543  sudo python3 graphing.py 
+  544  sudo nano graphing.py 
+  545  sudo python3 graphing.py 
+  546  sudo nano graphing.py 
+  547  sudo python3 graphing.py 
+  548  cd /home/pi/Documents/
+  549  sudo python3 graphing.py 
+  550  cd /home/pi/Documents
+  551  sudo python3 graphing.py
+  552  cd /var/www/html/
+  553  ls
+  554  sudo nano hello.py
+  555  sudo nano graphing.py 
+  556  ls
+  557  sudo nano graphing.py 
+  558  kill 26244
+  559  sudo kill 26244
+  560  nano graphing.py 
+  561  cd /home/pi/Documents
+  562  sudo python3 graphing.py
+  563  sudo nano graphing.py
+  564  cd /var/www/html/
+  565  sudo nano graphing.py
+  566  sudo nano hello.py 
+  567  sudo nano graphing.py
+  568  history | grep log
+  569  sudo nano /var/log/apache2/error.log
+  570  sudo nano graphing.py
+  571  rm sensors.html 
+  572  sudo rm sensors.html 
+  573  chgrp www-data /var/www/html/
+  574  sudo chgrp www-data /var/www/html/
+  575  chmod g+rwx /var/www/html/
+  576  sudo chmod g+rwx /var/www/html/
+  577  chmod g-w /var/www/html/
+  578  sudo chmod g-w /var/www/html/
+  579  rm sensors.html 
+  580  sudo rm sensors.html 
+  581  md data
+  582  mkdir data
+  583  sudo mkdir data
+  584  sudo chmod g-w /var/www/html/data
+  585  sudo chmod g+rwx /var/www/html/data
+  586  sudo nano graphing.py
+  587  sudo chmod g-w /var/www/html/data/
+  588  sudo chmod g+rwx /var/www/html/data/
+  589  sudo chgrp www-data /var/www/html/data/
+  590  sudo nano graphing.py
+  591  sudo kill 280033
+  592  sudo kill 28033
+  593  sudo nano graphing.py
+  594  sudo kill 28033
+  595  sudo nano graphing.py
+  596  ps
+  597  ps -a
+  598  sudo kill 28033
+  599  sudo nano graphing.py
+  600  history > /home/pi/Documents/hostory.log
