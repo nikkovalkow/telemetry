@@ -55,7 +55,7 @@ to_date = end
 
 figures=[]
 
-for sensor in range(0,5):
+for sensor in range(0,4):
     timelist=[]
     templist=[]
 
