@@ -72,7 +72,7 @@ while 1:
         col.insert_one(testdata)
         sensor_number = sensor_number + 1
         print(int(testdata['temp']))
-        if (int(testdata['temp']) > 70) and not SmsIsSent:
+        if (int(testdata['temp']) > 73) and not SmsIsSent:
             SendSMS('Sensor '+str(sensor_number)+' temperature '+str(testdata['temp']))
             #SendSMS('Hello world11')
             print ("Temperature warning!")
