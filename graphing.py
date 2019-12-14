@@ -8,6 +8,7 @@ import datetime
 from graphing_func import GetSensorInfo, ConvertStrToDate
 
 export_file_path = "/var/www/html/data/sensors.html"
+number_of_sensors = 10
 #export_file_path = "sensors.html"
 
 
@@ -42,7 +43,7 @@ for i in range(0,5):
 
 
 
-for sensor in range(0,4):
+for sensor in range(0,number_of_sensors):
     timelist=[]
     templist=[]
     sensor_info=GetSensorInfo(sensor)
