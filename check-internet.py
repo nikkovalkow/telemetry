@@ -33,6 +33,6 @@ def TestInternetConnection():
 
 for repeat in range(0,2):
   
-    testdata={ 'time':datetime.datetime.now(),'sensor':4,'ms-delay' : TestInternetConnection() }
+    testdata={ 'time':datetime.datetime.now(),'sensor':4,'temp' : TestInternetConnection() }
     col.insert_one(testdata)
     time.sleep(30)
