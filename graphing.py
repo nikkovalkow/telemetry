@@ -1,48 +1,30 @@
 #!/usr/bin/python3
-import numpy as np
 from bokeh.layouts import gridplot
 from bokeh.plotting import figure, show, output_file, save
 from pymongo import MongoClient
-import datetime
 import cgitb
 import cgi
 import datetime
+from graphing_func import GetSensorInfo, ConvertStrToDate
+
+#export_file_path = "/var/www/html/data/sensors.html"
+export_file_path = "sensors.html"
+
 
 cgitb.enable()
 print('Content-Type: text/html;charset=utf-8')
 print('')
 arguments=cgi.FieldStorage()
-start=str(arguments.getfirst('start','Null')).split('.')
-end=str(arguments.getfirst('end','Null')).split('.')
 
-for i in range (len(start)+1,6):
-        start.append('0')
+from_date=ConvertStrToDate(str(arguments.getfirst('start','Null')))
+to_date=ConvertStrToDate(str(arguments.getfirst('end','Null')))
 
-for i in range (len(end)+1,6):
-        end.append('0')
 
-time_range=[]
-time_range.append(start)
-time_range.append(end)
+# TEST ENV
+from_date=ConvertStrToDate('2019.12.13')
+to_date=ConvertStrToDate('2019.12.14')
 
-for time_point in time_range:
-        for i in range(0,len(time_point)):
-                try:
-                        time_point[i]=int(time_point[i])
-                        if time_point[i]>10000: time_point[i]=0
-                except:
-                        time_point[i]=0
 
-try:
-        start = datetime.datetime(time_range[0][0],time_range[0][1],time_range[0][2],time_range[0][3],time_range[0][4])
-except:
-        start = datetime.datetime.now()
-        print('Date paramenter error')
-try:
-        end = datetime.datetime(time_range[1][0],time_range[1][1],time_range[1][2],time_range[1][3],time_range[1][4])
-except:
-        end= datetime.datetime.now()
-        print('Date paramenter error')
 
 
 client = MongoClient('localhost',27017)
@@ -50,54 +32,49 @@ client = MongoClient('localhost',27017)
 db = client['sensors']
 col= db['temperature']
 
-from_date = start
-to_date = end
-
 figures=[]
+figures_sensors={}
+
+for i in range(0,5):
+    figures.append(None)
+
+
+
+
 
 for sensor in range(0,4):
     timelist=[]
     templist=[]
+    sensor_info=GetSensorInfo(sensor)
 
-    figures.append(figure(x_axis_type="datetime", title="Sensor "+str(sensor)))
-    figures[sensor].grid.grid_line_alpha=0.3
-    figures[sensor].xaxis.axis_label = 'Date'
-    figures[sensor].yaxis.axis_label = 'Temp'
-    
+    if figures[sensor_info[2]]==None:
+        figures[sensor_info[2]] =figure(x_axis_type="datetime")
+        figures[sensor_info[2]].xaxis.axis_label = 'Date'
+        figures[sensor_info[2]].ygrid.band_fill_alpha = 0.01
+        figures[sensor_info[2]].ygrid.band_fill_color = "navy"
+
+
     for record in col.find({ 'time':{'$gte':from_date,'$lt':to_date},'sensor':sensor}):
         timelist.append(record['time'])
         templist.append(record['temp'])
 
-    figures[sensor].line(timelist, templist, color='#33cc33', legend='Temperature')
-
+    figures[sensor_info[2]].line(timelist, templist, color=sensor_info[3],line_width=1.5,line_alpha=0.8,legend_label=sensor_info[0])
+    figures[sensor_info[2]].legend.location = 'bottom_left'
+    figures[sensor_info[2]].legend.orientation = "horizontal"
 timelist=[]
 templist=[]
 
-col= db['network']
-
-internet = figure(x_axis_type="datetime", title="Internet")
-internet.grid.grid_line_alpha=0.3
-internet.xaxis.axis_label = 'Date'
-internet.yaxis.axis_label = 'delay (ms)'
-
-for record in col.find({ 'time':{'$gte':from_date,'$lt':to_date},'sensor':0}):
-    
-    timelist.append(record['time'])
-    templist.append(record['ms-delay'])
 
 
 
-internet.line(timelist, templist, color='#33cc33', legend='Internet_delay')
-    
-   
-
-output_file("/var/www/html/data/sensors.html", title="Sensors")
+output_file(export_file_path, title="Sensors")
 
 figures_list=[]
 for f in figures:
-    figures_list.append([f])
-figures_list.append([internet])
+    if f!=None:
+        figures_list.append([f])
+
 
 save(gridplot(figures_list, plot_width=1800, plot_height=400))
 
-print('<a href=/data/sensors.html>Data for '+str(start)+' - '+str(end)+' </a>')
+print('<a href=/data/sensors.html>Data for '+str(from_date)+' - '+str(to_date)+' </a>')
