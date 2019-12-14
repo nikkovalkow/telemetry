@@ -58,7 +58,7 @@ for sensor in range(0,4):
         timelist.append(record['time'])
         templist.append(record['temp'])
 
-    figures[sensor_info[2]].line(timelist, templist, color=sensor_info[3],line_width=1.5,line_alpha=0.8,legend_label=sensor_info[0])
+    figures[sensor_info[2]].line(timelist, templist, color=sensor_info[3],line_width=1.5,line_alpha=0.8,legend=sensor_info[0])
     figures[sensor_info[2]].legend.location = 'bottom_left'
     figures[sensor_info[2]].legend.orientation = "horizontal"
 timelist=[]
