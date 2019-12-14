@@ -8,7 +8,7 @@ try:
     client = MongoClient('localhost',27017)
 
     db = client['sensors']
-    col= db['network']
+    col= db['temperature']
 except:
     print ("Check_Internet - mongodb connection error")
 
@@ -33,6 +33,6 @@ def TestInternetConnection():
 
 for repeat in range(0,2):
   
-    testdata={ 'time':datetime.datetime.now(),'sensor':0,'ms-delay' : TestInternetConnection() }
+    testdata={ 'time':datetime.datetime.now(),'sensor':4,'ms-delay' : TestInternetConnection() }
     col.insert_one(testdata)
     time.sleep(30)
