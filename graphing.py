@@ -7,8 +7,8 @@ import cgi
 import datetime
 from graphing_func import GetSensorInfo, ConvertStrToDate
 
-#export_file_path = "/var/www/html/data/sensors.html"
-export_file_path = "sensors.html"
+export_file_path = "/var/www/html/data/sensors.html"
+#export_file_path = "sensors.html"
 
 
 cgitb.enable()
