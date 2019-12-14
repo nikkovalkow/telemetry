@@ -21,8 +21,8 @@ to_date=ConvertStrToDate(str(arguments.getfirst('end','Null')))
 
 
 # TEST ENV
-from_date=ConvertStrToDate('2019.12.13')
-to_date=ConvertStrToDate('2019.12.14')
+#from_date=ConvertStrToDate('2019.12.13')
+#to_date=ConvertStrToDate('2019.12.14')
 
 
 
