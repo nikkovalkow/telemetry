@@ -3,6 +3,7 @@ from pymongo import MongoClient
 import time
 import datetime
 from sendsms import SendSMS
+from sensors_func import GetMinerInfo
 
 import RPi.GPIO as GPIO
 import dht11
@@ -57,6 +58,11 @@ def GetTemperatureDS18(sensor):
         
         print('Temp sensor error',datetime.datetime.now())
 
+def PutSensor(number,value,collection):
+    testdata = {'time': datetime.datetime.now(), 'sensor': number, 'value': value}
+    collection.insert_one(testdata)
+
+
 client = MongoClient('localhost',27017)
 
 db = client['sensors']
@@ -64,20 +70,26 @@ col= db['data']
 
 while 1:
     testdata={ 'time':datetime.datetime.now(),'sensor':0,'value' : GetCPUTemp() }
-    col.insert_one(testdata)
+    PutSensor(0,GetCPUTemp(),col)
+
     sensor_number=1
 
     for s in sensors:
-        testdata={ 'time':datetime.datetime.now(),'sensor':sensor_number,'value' : GetTemperatureDS18(s) }
-        col.insert_one(testdata)
+        PutSensor(sensor_number, GetTemperatureDS18(s), col)
         sensor_number = sensor_number + 1
+
         if (int(testdata['value']) > 72) and not SmsIsSent:
             SendSMS('Sensor '+str(sensor_number)+' temperature '+str(testdata['value']))
             #SendSMS('Hello world11')
             print ("Temperature warning!")
             SmsIsSent=True
 
-    
+    miner_info = GetMinerInfo()
+
+    for v in miner_info:
+        PutSensor(sensor_number, v, col)
+        sensor_number = sensor_number + 1
+
     
     
     
