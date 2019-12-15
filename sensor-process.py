@@ -85,8 +85,9 @@ while 1:
             SmsIsSent=True
 
     miner_info = GetMinerInfo()
-
+    print(miner_info)
     for v in miner_info:
+        print(v,sensor_number)
         PutSensor(sensor_number, v, col)
         sensor_number = sensor_number + 1
 
