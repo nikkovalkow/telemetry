@@ -8,7 +8,7 @@ import datetime
 from graphing_func import GetSensorInfo, ConvertStrToDate
 
 export_file_path = "/var/www/html/data/sensors.html"
-number_of_sensors = 5
+number_of_sensors = 11
 #export_file_path = "sensors.html"
 
 

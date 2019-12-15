@@ -39,7 +39,7 @@ def GetMinerInfo():
 
 
 
-        return [mhs,freq,temperature,voltage,power]
+        return [mhs,freq,temperature,voltage,power,int(mhs/power)]
         s.close()
     except:
         return [0,0,0,0,0]

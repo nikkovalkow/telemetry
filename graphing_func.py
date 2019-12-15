@@ -3,7 +3,9 @@ import datetime
 def GetSensorInfo(plot_num):
     #Description, Y-Name,Graph num,color
     try:
-        switcher ={0:["Pi CPU",'Temp',3,'#33cc33'],1:["Oil Pump",'Temp',0,'#33cc33'],2:["Power Supply Oil",'Temp',0,'orange'],3:["ASIC Oil Out",'Temp',0,'skyblue'],4:['Internet delay','delay(ms)',2,'#33cc33']}
+        switcher ={0:["Pi CPU",'Temp',3,'#33cc33'],1:["Oil Pump",'Temp',0,'#33cc33'],2:["Power Supply Oil",'Temp',0,'orange'],3:["ASIC Oil Out",'Temp',0,'skyblue'],\
+                   4:['Internet delay','delay(ms)',2,'#33cc33'],5:['MHS 5s','MHS 5s',3,'#33cc33'],6:['freq_avg','MHz',4,'#33cc33'],7:['Voltage','V',5,'#33cc33'],\
+                   8:['Power','W',6,'#33cc33'],9:['Board temperature','Temp',7,'#33cc33'],10:['Efficiency','MH/W',8,'#33cc33']}
         return switcher.get(plot_num)
     except:
 
