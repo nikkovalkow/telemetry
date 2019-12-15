@@ -26,7 +26,8 @@ def GetMinerInfo():
 
     response = linesplit(s)
 
-    response = response.decode('utf8')
+    print(response)
+    response = response.decode('utf8').replace('\x00','')
     response = json.loads(response)
 
     mhs = int(response['SUMMARY'][0]['MHS 5s'])
