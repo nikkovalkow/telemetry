@@ -20,25 +20,28 @@ def linesplit(socket):
 
 def GetMinerInfo():
 
-    s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-    s.connect((api_ip,int(api_port)))
-    s.send(json.dumps({"command":'summary'}).encode())
+    try:
+        s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+        s.connect((api_ip,int(api_port)))
+        s.send(json.dumps({"command":'summary'}).encode())
 
-    response = linesplit(s)
-
-    print(response)
-    response = response.decode('utf8').replace('\x00','')
-    response = json.loads(response)
-
-    mhs = int(response['SUMMARY'][0]['MHS 5s'])
-    freq = int(response['SUMMARY'][0]['freq_avg'])
-    voltage = int(response['SUMMARY'][0]['Voltage'])
-    power = int(response['SUMMARY'][0]['Power'])
-    temperature= int(response['SUMMARY'][0]['Temperature'])
+        response = linesplit(s)
 
 
+        response = response.decode('utf8').replace('\x00','')
+        response = json.loads(response)
 
-    print(mhs,freq,temperature,voltage,power)
-    s.close()
+        mhs = int(response['SUMMARY'][0]['MHS 5s'])
+        freq = int(response['SUMMARY'][0]['freq_avg'])
+        voltage = int(response['SUMMARY'][0]['Voltage'])
+        power = int(response['SUMMARY'][0]['Power'])
+        temperature= int(response['SUMMARY'][0]['Temperature'])
 
-GetMinerInfo()
+
+
+        return [mhs,freq,temperature,voltage,power]
+        s.close()
+    except:
+        return [0,0,0,0,0]
+
+print(GetMinerInfo())
