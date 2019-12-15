@@ -8,7 +8,7 @@ import datetime
 from graphing_func import GetSensorInfo, ConvertStrToDate
 
 export_file_path = "/var/www/html/data/sensors.html"
-number_of_sensors = 4
+number_of_sensors = 5
 #export_file_path = "sensors.html"
 
 
@@ -36,7 +36,7 @@ col= db['data']
 figures=[]
 figures_sensors={}
 
-for i in range(0,5):
+for i in range(0,number_of_sensors):
     figures.append(None)
 
 
