@@ -18,7 +18,7 @@ def linesplit(socket):
         if buffer:
                 return buffer
 
-def GetMinerInfo()
+def GetMinerInfo():
 
     s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
     s.connect((api_ip,int(api_port)))
