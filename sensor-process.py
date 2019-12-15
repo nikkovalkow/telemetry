@@ -59,8 +59,11 @@ def GetTemperatureDS18(sensor):
         print('Temp sensor error',datetime.datetime.now())
 
 def PutSensor(number,value,collection):
-    testdata = {'time': datetime.datetime.now(), 'sensor': number, 'value': value}
-    collection.insert_one(testdata)
+    try:
+        testdata = {'time': datetime.datetime.now(), 'sensor': number, 'value': value}
+        collection.insert_one(testdata)
+    except:
+        print('PutSensor - error writing to db')
 
 
 client = MongoClient('localhost',27017)
