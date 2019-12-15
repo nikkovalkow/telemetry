@@ -31,7 +31,7 @@ to_date=ConvertStrToDate(str(arguments.getfirst('end','Null')))
 client = MongoClient('localhost',27017)
 
 db = client['sensors']
-col= db['temperature']
+col= db['data']
 
 figures=[]
 figures_sensors={}
@@ -51,13 +51,14 @@ for sensor in range(0,number_of_sensors):
     if figures[sensor_info[2]]==None:
         figures[sensor_info[2]] =figure(x_axis_type="datetime")
         figures[sensor_info[2]].xaxis.axis_label = 'Date'
+        figures[sensor_info[2]].yaxis.axis_label = sensor_info[1]
         figures[sensor_info[2]].ygrid.band_fill_alpha = 0.01
         figures[sensor_info[2]].ygrid.band_fill_color = "navy"
 
 
     for record in col.find({ 'time':{'$gte':from_date,'$lt':to_date},'sensor':sensor}):
         timelist.append(record['time'])
-        templist.append(record['temp'])
+        templist.append(record['value'])
 
     figures[sensor_info[2]].line(timelist, templist, color=sensor_info[3],line_width=1.5,line_alpha=0.8,legend=sensor_info[0])
     figures[sensor_info[2]].legend.location = 'bottom_left'

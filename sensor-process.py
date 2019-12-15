@@ -60,20 +60,19 @@ def GetTemperatureDS18(sensor):
 client = MongoClient('localhost',27017)
 
 db = client['sensors']
-col= db['temperature']
+col= db['data']
 
 while 1:
-    testdata={ 'time':datetime.datetime.now(),'sensor':0,'temp' : GetCPUTemp() }
+    testdata={ 'time':datetime.datetime.now(),'sensor':0,'value' : GetCPUTemp() }
     col.insert_one(testdata)
     sensor_number=1
 
     for s in sensors:
-        testdata={ 'time':datetime.datetime.now(),'sensor':sensor_number,'temp' : GetTemperatureDS18(s) }
+        testdata={ 'time':datetime.datetime.now(),'sensor':sensor_number,'value' : GetTemperatureDS18(s) }
         col.insert_one(testdata)
         sensor_number = sensor_number + 1
-        print(int(testdata['temp']))
-        if (int(testdata['temp']) > 73) and not SmsIsSent:
-            SendSMS('Sensor '+str(sensor_number)+' temperature '+str(testdata['temp']))
+        if (int(testdata['value']) > 72) and not SmsIsSent:
+            SendSMS('Sensor '+str(sensor_number)+' temperature '+str(testdata['value']))
             #SendSMS('Hello world11')
             print ("Temperature warning!")
             SmsIsSent=True
