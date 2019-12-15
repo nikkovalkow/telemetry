@@ -10,6 +10,8 @@ col_net = db['network']
 print ("Check_Internet - mongodb connection error")
 
 
+col_temp.delete_many(col_temp.find({'temp':None}))
+
 for record in col_temp.find():
 
     testdata = {'time': record['time'], 'sensor':record['sensor'], 'value': record['temp']}
