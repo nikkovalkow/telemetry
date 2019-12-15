@@ -9,8 +9,8 @@ col_data = db['data']
 col_net = db['network']
 print ("Check_Internet - mongodb connection error")
 
-
-col_temp.delete_many(col_temp.find({'temp':None}))
+for record in col_temp.find({'temp':None}):
+    col_temp.delete_one(record)
 
 for record in col_temp.find():
 
