@@ -44,4 +44,4 @@ def GetMinerInfo():
     except:
         return [0,0,0,0,0]
 
-print(GetMinerInfo())
+
