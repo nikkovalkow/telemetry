@@ -16,15 +16,28 @@ SmsIsSent=False
 
 sensors=['28-030197945ffe','28-03029794645a', '28-030c97940c83']
 
-def GetHumidity():
+def GetDHT11Temperature():
+    try:
+        for x in range(0,20):
+            result = instance.read()
+            if result.is_valid():
+                return result.temperature
+                break
+    except:
+        print('DHT11 read error')
+        return -127
+
+def GetDHT11Humidity():
+    try:
     
-    
-    for x in range(0,20):
-        result = instance.read()
-        if result.is_valid():
-            return result.humidity
-            break
-        
+        for x in range(0,20):
+            result = instance.read()
+            if result.is_valid():
+                return result.humidity
+                break
+    except:
+        print('DHT11 read error')
+        return -127        
     
 def GetTemperature():
     try:
@@ -88,13 +101,16 @@ while 1:
             SmsIsSent=True
 
     miner_info = GetMinerInfo()
-    print(miner_info)
+    
     for v in miner_info:
         sensor_number = sensor_number + 1
-        print(v,sensor_number)
+        
         PutSensor(sensor_number, v, col)
 
-
+    sensor_number = sensor_number + 1
+    PutSensor(sensor_number,GetDHT11Temperature(),col)
+    sensor_number = sensor_number + 1
+    PutSensor(sensor_number,GetDHT11Humidity(),col)
 
 
     
