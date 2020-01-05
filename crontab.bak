@@ -1,0 +1,7 @@
+@reboot sudo python3 /home/pi/Documents/sensor-process.py >> /home/pi/Documents/sensor-process.log &
+@reboot sudo iptables-restore /home/pi/Documents/firewall.conf
+@reboot autossh -M 10900 -fN -o "PubkeyAuthentication=yes" -o "StrictHostKeyChecking=false" -o "PasswordAuthentication=no" -o "ServerAliveInterval 60" -o "ServerAliveCountMax 3" -R learnin$
+* * * * * sudo python3 /home/pi/Documents/check-internet.py >> /home/pi/Documents/check-internet.log &
+*/15 * * * * python3 /home/pi/Documents/copy_to_learnin.py >> /home/pi/Documents/copy_to_learnin.log
+10 */3 * * * python3 /home/pi/Documents/copy_to_learnin_week.py >> /home/pi/Documents/copy_to_learnin.log
+
