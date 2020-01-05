@@ -20,9 +20,11 @@ def GetDHT11Temperature():
     try:
         for x in range(0,20):
             result = instance.read()
-            if result.is_valid():
+            if result.is_valid() and result.temperature!=0:
                 return result.temperature
                 break
+            time.sleep(1)
+        return -127
     except:
         print('DHT11 read error')
         return -127
@@ -32,9 +34,11 @@ def GetDHT11Humidity():
     
         for x in range(0,20):
             result = instance.read()
-            if result.is_valid():
+            if result.is_valid() and  result.humidity!=0:
                 return result.humidity
                 break
+            time.sleep(1)
+        return -127
     except:
         print('DHT11 read error')
         return -127        
@@ -108,9 +112,14 @@ while 1:
         PutSensor(sensor_number, v, col)
 
     sensor_number = sensor_number + 1
-    PutSensor(sensor_number,GetDHT11Temperature(),col)
+    dht11_temp = GetDHT11Temperature()
+    dht11_humidity = GetDHT11Humidity()
+    if dht11_temp!=-127:
+        PutSensor(sensor_number,dht11_temp,col)
+    
     sensor_number = sensor_number + 1
-    PutSensor(sensor_number,GetDHT11Humidity(),col)
+    if dht11_humidity!=-127:
+        PutSensor(sensor_number,dht11_humidity,col)
 
 
     
