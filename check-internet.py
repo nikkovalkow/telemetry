@@ -21,7 +21,7 @@ def TestInternetConnection():
         
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         start = default_timer()
-        s.connect(('8.8.8.8',53))
+        s.connect(('btc.ss.poolin.com',443))
         end = default_timer()
         s.close()
 
