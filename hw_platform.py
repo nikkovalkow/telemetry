@@ -8,11 +8,14 @@ def SendSMS(text):
     print('')
 
 def GetHDDSpace():
-    data = os.popen('df -h | grep vda').read()
-    data = data.split(' ')
-    return data
+    try:
+        data = os.popen('df -h --output=source,pcent | grep root').read()
+    
+        return int(data.split(' ')[-1].replace('%',''))
+    except:
+        print('Error GetHDDSpace()')
 
-print(GetHDDSpace())
+
 
 
 
