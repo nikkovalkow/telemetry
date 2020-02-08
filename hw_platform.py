@@ -8,7 +8,7 @@ def SendSMS(text):
     print('')
 
 def GetHDDSpace():
-    data = os.system('df -h | grep vda')
+    data = os.popen('df -h | grep vda').read()
     data = data.split(' ')
     return data
 
