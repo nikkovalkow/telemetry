@@ -33,7 +33,7 @@ def TestInternetConnection():
 
 for repeat in range(0,2):
   
-    testdata={ 'time':datetime.datetime.now(),'sensor':4,'value' : TestInternetConnection() }
+    testdata={ 'time':datetime.datetime.now(),'device':0,'sensor':4,'value' : TestInternetConnection() }
     col.insert_one(testdata)
     time.sleep(30)
 client.close()
