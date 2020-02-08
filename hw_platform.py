@@ -10,5 +10,9 @@ def SendSMS(text):
 def GetHDDSpace():
     data = os.system('df -h | grep vda')
     data = data.split(' ')
-    print(data)
+    return data
+
+print(GetHDDSpace())
+
+
 
