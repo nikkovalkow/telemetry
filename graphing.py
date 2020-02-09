@@ -52,7 +52,7 @@ for sensor in range(0,number_of_sensors):
         if (sensor == 0):
             figures[sensor_info[2]] =figure(x_axis_type="datetime")
         else:
-            figures[sensor_info[2]] = figure(x_axis_type="datetime",x_range =  figures[0].x_range)
+            figures[sensor_info[2]] = figure(x_axis_type="datetime",x_range =  figures[GetSensorInfo(0)[2]].x_range)
 
         figures[sensor_info[2]].xaxis.axis_label = 'Date'
         figures[sensor_info[2]].yaxis.axis_label = sensor_info[1]
