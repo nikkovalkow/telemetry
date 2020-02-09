@@ -81,6 +81,6 @@ for f in figures:
         figures_list.append([f])
 
 
-save(gridplot(figures_list, plot_width=1800, plot_height=400))
+save(gridplot(figures_list, plot_width=1800, plot_height=250))
 
 print('<a href=/data/sensors.html>Data for '+str(from_date)+' - '+str(to_date)+' </a>')
