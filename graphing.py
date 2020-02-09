@@ -6,21 +6,21 @@ import cgitb
 import cgi
 import datetime
 from graphing_func import GetSensorInfo, ConvertStrToDate
+import sys
+import pandas as pd
+from bokeh.models import DatetimeTickFormatter, HoverTool
 
-export_file_path = "/var/www/html/data/sensors.html"
+#export_file_path = "/var/www/html/data/sensors.html"
 number_of_sensors = 14
-#export_file_path = "sensors.html"
+export_file_path = "sensors.html"
 
 
-cgitb.enable()
-print('Content-Type: text/html;charset=utf-8')
-print('')
-arguments=cgi.FieldStorage()
+from_date=ConvertStrToDate(str(sys.argv[1]))
+to_date=ConvertStrToDate(str(sys.argv[2]))
 
-from_date=ConvertStrToDate(str(arguments.getfirst('start','Null')))
-to_date=ConvertStrToDate(str(arguments.getfirst('end','Null')))
-
-
+scale  = sys.argv[3] # T , H , D, W, M
+circles = sys.argv[4] #Y/N
+export_file_path = sys.argv[5] #File path
 # TEST ENV
 #from_date=ConvertStrToDate('2019.12.13')
 #to_date=ConvertStrToDate('2019.12.14')
@@ -50,7 +50,7 @@ for sensor in range(0,number_of_sensors):
 
     if figures[sensor_info[2]]==None:
         if (sensor == 0):
-            figures[sensor_info[2]] =figure(x_axis_type="datetime")
+            figures[sensor_info[2]] = figure(x_axis_type="datetime")
         else:
             figures[sensor_info[2]] = figure(x_axis_type="datetime",x_range =  figures[GetSensorInfo(0)[2]].x_range)
 
@@ -64,23 +64,34 @@ for sensor in range(0,number_of_sensors):
         timelist.append(record['time'])
         templist.append(record['value'])
 
-    figures[sensor_info[2]].line(timelist, templist, color=sensor_info[3],line_width=1.5,line_alpha=0.8,legend=sensor_info[0])
-    figures[sensor_info[2]].legend.location = 'bottom_left'
-    figures[sensor_info[2]].legend.orientation = "horizontal"
+    if (len(timelist)!=0):
+        frame = pd.DataFrame(templist,index=timelist)
+
+        frame = frame[0].resample(scale, label='right', closed='right').mean()
+
+        timelist = frame.index.tolist()
+        templist = frame.tolist()
+
+        figures[sensor_info[2]].line(timelist, templist, color=sensor_info[3],line_width=1.5,line_alpha=0.8,legend=sensor_info[0])
+        if circles=="Y":
+            figures[sensor_info[2]].square(x=timelist, y=templist)
+            figures[sensor_info[2]].add_tools(HoverTool(tooltips=[("date", "@x{%F %H-%M}"),("value","$y")], formatters={"x": "datetime"}))
+        figures[sensor_info[2]].legend.location = 'bottom_left'
+        figures[sensor_info[2]].legend.orientation = "horizontal"
 timelist=[]
 templist=[]
 
 
 
 
-output_file(export_file_path, title="Sensors")
+
 
 figures_list=[]
 for f in figures:
     if f!=None:
         figures_list.append([f])
-
+output_file(export_file_path, title="Sensors")
 
 save(gridplot(figures_list, plot_width=1800, plot_height=300))
 
-print('<a href=/data/sensors.html>Data for '+str(from_date)+' - '+str(to_date)+' </a>')
+
