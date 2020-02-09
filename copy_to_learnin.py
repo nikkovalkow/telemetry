@@ -15,7 +15,7 @@ if sys.argv[1]=="2DAYS":
 
 if sys.argv[1]=="ALL":
     now = datetime.datetime.now()
-    begin = now - datetime.timedelta(months=10)
+    begin = now - datetime.timedelta(days=365)
     now = now + datetime.timedelta(days=1)
     os.system("python3 graphing.py " + str(begin.year) + '.' + str(begin.month) + '.' + str(begin.day) + ' ' + str(now.year) + '.' + str(now.month) + '.' + str(now.day) + ' W Y sensors_weekly.html')
     time.sleep(30)
@@ -23,7 +23,7 @@ if sys.argv[1]=="ALL":
     
 if sys.argv[1]=="2MONTHS":
     now = datetime.datetime.now()
-    begin = now - datetime.timedelta(months=2)
+    begin = now - datetime.timedelta(days=60)
     now = now + datetime.timedelta(days=1)
     os.system("python3 graphing.py " + str(begin.year) + '.' + str(begin.month) + '.' + str(begin.day) + ' ' + str(now.year) + '.' + str(now.month) + '.' + str(now.day) + ' D Y sensors_daily.html')
     time.sleep(30)
