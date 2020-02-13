@@ -1,13 +1,17 @@
 import os
 import datetime
 import time
-while(1):
+def PingTest(ip):
+    data = os.popen('ping '+ip+' -c 1').read()
 
-    data = os.popen('ping 8.8.8.8 -c 1').read()
-
-    if data.find('1 received')!=-1:
-        print("Ok")
+    if data.find('1 received') != -1:
+        return True
     else:
-        print("No internet",datetime.datetime.now())
+        return False
+
+
+while(1):
+    print("192.168.0.1" ,PingTest("192.168.0.1"))
+    print("8.8.8.8", PingTest("8.8.8.8"))
 
     time.sleep(1)
