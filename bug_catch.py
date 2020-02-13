@@ -18,4 +18,6 @@ while(1):
     if data.find('1 received') == -1:
         print("No connection 192.168.1.1 ",datetime.datetime.now())
 
+    time.sleep(1)
+
 
