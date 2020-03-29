@@ -3,6 +3,8 @@ import os
 import socket
 import time
 from timeit import default_timer
+import RPi.GPIO as GPIO
+import dht11
 
 class BasicSensor:
     value = None
@@ -71,11 +73,36 @@ class TCPDelaySensor(BasicSensor):
 
             return 0
 
+class DHT11TemperatureSensor(BasicSensor):
+    type = "DHT11_humidity"
+    instance = None
+    def __init__(self,name,parameter):
+        self.name = name
+        self.parameter = parameter
+        GPIO.setwarnings(False)
+        GPIO.setmode(GPIO.BCM)
+        GPIO.cleanup()
+        self.instance = dht11.DHT11(pin=parameter)
+
+    def Refresh(self):
+        try:
+            for x in range(0, 20):
+                result = self.instance.read()
+                if result.is_valid() and result.temperature != 0:
+                    return result.temperature
+                    break
+                time.sleep(1)
+            return -127
+        except:
+            print('DHT11 read error')
+            return -127
+
 
 DS18 = DS18Sensor("Sensor1","28-030197945ffe")
 CPU = CPUTempSensor("CPU1_temp")
 HDD = HDDSpaceSensor("HDD1_space")
 Internet = TCPDelaySensor("google delay","google.com")
+DHT11= DHT11TemperatureSensor("DHT_temp",26)
 
 
 print (DS18.value)
