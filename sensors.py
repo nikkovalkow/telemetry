@@ -6,7 +6,7 @@ class BasicSensor:
     parameter = None
     type = "Basic"
 
-    def __init__(self,name,parameter):
+    def __init__(self,name,parameter=None):
         self.name = name
         self.parameter = parameter
         self.value = self.Refresh()
@@ -36,11 +36,22 @@ class DS18Sensor(BasicSensor):
         except:
 
             print('Temp sensor error', datetime.datetime.now())
+class CPUSensor(BasicSensor):
+    type = "CPU_temp"
+    def Refresh(self):
+        try:
+            cpu_sensor = open('/sys/class/thermal/thermal_zone0/temp')
+            return int(cpu_sensor.read()) / 1000
+        except:
+            print('CPU temp sensor error', datetime.datetime.now())
+
 
 
 DS18 = DS18Sensor("Sensor1","28-030197945ffe")
+CPU = CPUSensor("CPU_temp")
 
 print (DS18.value)
+print(CPU.value)
 
 
 
