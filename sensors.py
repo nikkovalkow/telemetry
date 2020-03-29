@@ -83,6 +83,7 @@ class DHT11TemperatureSensor(BasicSensor):
         GPIO.setmode(GPIO.BCM)
         GPIO.cleanup()
         self.instance = dht11.DHT11(pin=parameter)
+        self.value = self.Refresh()
 
     def Refresh(self):
         try:
