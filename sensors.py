@@ -1,5 +1,8 @@
 import datetime
 import os
+import socket
+import time
+from timeit import default_timer
 
 class BasicSensor:
     value = None
@@ -51,14 +54,34 @@ class HDDSpaceSensor(BasicSensor):
         except:
             print('Error GetHDDSpace()')
 
+class TCPDelaySensor(BasicSensor):
+    type = "TCP_Delay"
+    def Refresh(self):
+
+        try:
+
+            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            start = default_timer()
+            s.connect((self.parameter, 443))
+            end = default_timer()
+            s.close()
+
+            return round((end - start) * 1000, 1)
+        except:
+
+            return 0
+
 
 DS18 = DS18Sensor("Sensor1","28-030197945ffe")
 CPU = CPUTempSensor("CPU1_temp")
 HDD = HDDSpaceSensor("HDD1_space")
+Internet = TCPDelaySensor("google delay","google.com")
+
 
 print (DS18.value)
 print(CPU.value)
 print(HDD.value)
+print(Internet.value)
 
 
 
