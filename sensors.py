@@ -1,4 +1,5 @@
 import datetime
+import os
 
 class BasicSensor:
     value = None
@@ -17,11 +18,6 @@ class BasicSensor:
     def Refresh(self):
         return 100
 
-class DHTSensor(BasicSensor):
-    type = "DHT"
-    def Refresh(self):
-        return 200
-
 class DS18Sensor(BasicSensor):
     type = "DS18"
     def Refresh(self):
@@ -36,7 +32,8 @@ class DS18Sensor(BasicSensor):
         except:
 
             print('Temp sensor error', datetime.datetime.now())
-class CPUSensor(BasicSensor):
+class CPUTempSensor(BasicSensor):
+
     type = "CPU_temp"
     def Refresh(self):
         try:
@@ -45,13 +42,23 @@ class CPUSensor(BasicSensor):
         except:
             print('CPU temp sensor error', datetime.datetime.now())
 
+class HDDSpaceSensor(BasicSensor):
+    type = "HDD_space"
+    def Refresh(self):
+        try:
+            data = os.popen('df -h --output=source,pcent | grep root').read()
+            return int(data.split(' ')[-1].replace('%', ''))
+        except:
+            print('Error GetHDDSpace()')
 
 
 DS18 = DS18Sensor("Sensor1","28-030197945ffe")
-CPU = CPUSensor("CPU_temp")
+CPU = CPUTempSensor("CPU1_temp")
+HDD = HDDSpaceSensor("HDD1_space")
 
 print (DS18.value)
 print(CPU.value)
+print(HDD.value)
 
 
 
