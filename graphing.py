@@ -14,7 +14,7 @@ from bokeh.models import DatetimeTickFormatter, HoverTool
 number_of_sensors = 14
 export_file_path = "sensors.html"
 
-
+print(sys.argv)
 from_date=ConvertStrToDate(str(sys.argv[1]))
 to_date=ConvertStrToDate(str(sys.argv[2]))
 
