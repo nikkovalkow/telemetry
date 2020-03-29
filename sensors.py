@@ -109,6 +109,7 @@ print (DS18.value)
 print(CPU.value)
 print(HDD.value)
 print(Internet.value)
+print(DHT11.value)
 
 
 
