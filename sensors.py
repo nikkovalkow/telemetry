@@ -87,7 +87,7 @@ class DHT11TemperatureSensor(BasicSensor):
 
     def Refresh(self):
         try:
-            for x in range(0, 20):
+            for x in range(0, 10):
                 result = self.instance.read()
                 if result.is_valid() and result.temperature != 0:
                     return result.temperature
