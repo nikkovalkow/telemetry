@@ -27,8 +27,7 @@ def GetWhatsMinerInfo(ip,port):
 
         response = response.decode('utf8').replace('\x00', '')
         response = json.loads(response)
-        print(response)
+        return response
 
     except:
          return [0, 0, 0, 0, 0]
-GetWhatsMinerInfo('192.168.10.10',4028)
