@@ -25,13 +25,9 @@ class WhatsMiner(BasicDevice):
         self.name = name
         self.ip = ip
         self.port = port
-        response = GetWhatsMinerInfo(self.ip,self.port)
-        self.Sensors.append()
-        mhs = int(response['SUMMARY'][0]['MHS 5s'])
-        freq = int(response['SUMMARY'][0]['freq_avg'])
-        voltage = int(response['SUMMARY'][0]['Voltage'])
-        power = int(response['SUMMARY'][0]['Power'])
-        temperature = int(response['SUMMARY'][0]['Temperature'])
+        self.RefreshSensors()
+
+
     def RefreshSensors(self):
         self.Sensors = []
         response = GetWhatsMinerInfo(self.ip, self.port)
