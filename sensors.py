@@ -40,6 +40,7 @@ class WhatsMiner(BasicDevice):
         self.Sensors.append(BasicSensor("Fan Speed Out", int(response['SUMMARY'][0]['Fan Speed Out'])))
         self.Sensors.append(BasicSensor("Fan Speed In", int(response['SUMMARY'][0]['Fan Speed In'])))
         self.Sensors.append(BasicSensor("Power Fanspeed", int(response['SUMMARY'][0]['Power Fanspeed'])))
+        self.Sensors.append(BasicSensor("Test", int(response['SUMMARY'][0]['Power Fanfspeed'])))
 
 
 class BasicSensor:
