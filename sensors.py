@@ -81,11 +81,11 @@ class Platform1(BasicDevice):
         self.name = name
 
         for sensor in ds18_sensors:
-            self.Sensors.append(DS18Sensor("Sensor1",sensor))
+            self.Sensors.append(DS18Sensor("Temp "+sensor,sensor))
 
         self.Sensors.append(CPUTempSensor("CPU1_temp"))
         self.Sensors.append(HDDSpaceSensor("HDD1_space"))
-        self.Sensors.append(TCPDelaySensor("google delay","google.com"))
+        self.Sensors.append(TCPDelaySensor("Internet delay","google.com"))
         self.Sensors.append(DHT11TemperatureSensor("DHT_temp",26))
 
 
@@ -203,7 +203,7 @@ for s in miner1.Sensors:
 hw_module = Platform1("RPI",['28-030197945ffe','28-03029794645a', '28-030c97940c83'])
 
 for s in hw_module.Sensors:
-    print(s.type,s.value)
+    print(s.name,s.value)
 
 
 #print (DS18.value)
