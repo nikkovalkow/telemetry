@@ -1,16 +1,42 @@
 import datetime
 import os
 import socket
+import json
 import time
 from timeit import default_timer
 import RPi.GPIO as GPIO
 import dht11
 
+class BasicDevice:
+    Sensors =[]
+    name = None
+    type = "BasicDevice"
+
+    def RefreshSensors(self):
+        if len(self.Sensors)!= 0:
+            for sensor in self.Sensors:
+                sensor.Refresh()
+class WhatsMiner(BasicDevice):
+    ip = None
+    port = None
+    def __init__(self,name,ip,port):
+        self.name = name
+        self.ip = ip
+        self.port = port
+
+
+
+
 class BasicSensor:
+    min = None
+    max = None
+    deviation = None
+
     value = None
     name = None
     parameter = None
-    type = "Basic"
+
+    type = "BasicSensor"
 
     def __init__(self,name,parameter=None):
         self.name = name
@@ -18,13 +44,14 @@ class BasicSensor:
         self.value = self.Refresh()
 
     def GetValue(self):
+        self.value = self.Refresh()
         return self.value
 
     def Refresh(self):
         return 100
 
 class DS18Sensor(BasicSensor):
-    type = "DS18"
+    type = "DS18_temp"
     def Refresh(self):
         try:
             device = open('/sys/bus/w1/devices/' + self.parameter + '/w1_slave', 'r')
