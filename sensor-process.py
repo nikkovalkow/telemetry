@@ -99,7 +99,7 @@ while 1:
         PutSensor(0,sensor_number,sensor_temperature , col)
         sensor_number = sensor_number + 1
 
-        if (sensor_temperature > 72) and not SmsIsSent:
+        if (sensor_temperature > 76) and not SmsIsSent:
             SendSMS('Sensor '+str(sensor_number)+' temperature '+str(sensor_temperature))
             #SendSMS('Hello world11')
             print ("Temperature warning!")
