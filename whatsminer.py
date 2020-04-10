@@ -15,7 +15,7 @@ def linesplit(socket):
         return buffer
 
 
-def GetMinerInfo(ip,port):
+def GetWhatsMinerInfo(ip,port):
 
     try:
 
@@ -31,4 +31,4 @@ def GetMinerInfo(ip,port):
 
     except:
          return [0, 0, 0, 0, 0]
-GetMinerInfo('192.168.10.10',4028)
+GetWhatsMinerInfo('192.168.10.10',4028)

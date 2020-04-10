@@ -6,6 +6,7 @@ import time
 from timeit import default_timer
 import RPi.GPIO as GPIO
 import dht11
+from whatsminer import GetWhatsMinerInfo
 
 class BasicDevice:
     Sensors =[]
@@ -16,6 +17,7 @@ class BasicDevice:
         if len(self.Sensors)!= 0:
             for sensor in self.Sensors:
                 sensor.Refresh()
+
 class WhatsMiner(BasicDevice):
     ip = None
     port = None
@@ -23,8 +25,25 @@ class WhatsMiner(BasicDevice):
         self.name = name
         self.ip = ip
         self.port = port
-
-
+        response = GetWhatsMinerInfo(self.ip,self.port)
+        self.Sensors.append()
+        mhs = int(response['SUMMARY'][0]['MHS 5s'])
+        freq = int(response['SUMMARY'][0]['freq_avg'])
+        voltage = int(response['SUMMARY'][0]['Voltage'])
+        power = int(response['SUMMARY'][0]['Power'])
+        temperature = int(response['SUMMARY'][0]['Temperature'])
+    def RefreshSensors(self):
+        self.Sensors = []
+        response = GetWhatsMinerInfo(self.ip, self.port)
+        self.Sensors.append()
+        self.Sensors.append(BasicSensor("MHS 5s",int(response['SUMMARY'][0]['MHS 5s'])))
+        self.Sensors.append(BasicSensor("freq_avg", int(response['SUMMARY'][0]['freq_avg'])))
+        self.Sensors.append(BasicSensor("Voltage", int(response['SUMMARY'][0]['Voltage'])))
+        self.Sensors.append(BasicSensor("Power", int(response['SUMMARY'][0]['Power'])))
+        self.Sensors.append(BasicSensor("Temperature", int(response['SUMMARY'][0]['Temperature'])))
+        self.Sensors.append(BasicSensor("Fan Speed Out", int(response['SUMMARY'][0]['Fan Speed Out'])))
+        self.Sensors.append(BasicSensor("Fan Speed In", int(response['SUMMARY'][0]['Fan Speed In'])))
+        self.Sensors.append(BasicSensor("Power Fanspeed", int(response['SUMMARY'][0]['Power Fanspeed'])))
 
 
 class BasicSensor:
@@ -48,7 +67,7 @@ class BasicSensor:
         return self.value
 
     def Refresh(self):
-        return 100
+        return self.parameter
 
 class DS18Sensor(BasicSensor):
     type = "DS18_temp"
@@ -126,18 +145,21 @@ class DHT11TemperatureSensor(BasicSensor):
             return -127
 
 
-DS18 = DS18Sensor("Sensor1","28-030197945ffe")
-CPU = CPUTempSensor("CPU1_temp")
-HDD = HDDSpaceSensor("HDD1_space")
-Internet = TCPDelaySensor("google delay","google.com")
-DHT11= DHT11TemperatureSensor("DHT_temp",26)
+#DS18 = DS18Sensor("Sensor1","28-030197945ffe")
+#CPU = CPUTempSensor("CPU1_temp")
+#HDD = HDDSpaceSensor("HDD1_space")
+#Internet = TCPDelaySensor("google delay","google.com")
+#DHT11= DHT11TemperatureSensor("DHT_temp",26)
+miner1 = WhatsMiner("miner1",'192.168.10.10','4028')
+for s in miner1.Sensors:
+    print(s.name,s.value)
 
 
-print (DS18.value)
-print(CPU.value)
-print(HDD.value)
-print(Internet.value)
-print(DHT11.value)
+#print (DS18.value)
+#print(CPU.value)
+#print(HDD.value)
+#print(Internet.value)
+#print(DHT11.value)
 
 
 
