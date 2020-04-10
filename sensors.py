@@ -32,15 +32,48 @@ class WhatsMiner(BasicDevice):
         self.Sensors = []
         response = GetWhatsMinerInfo(self.ip, self.port)
 
-        self.Sensors.append(BasicSensor("MHS 5s",int(response['SUMMARY'][0]['MHS 5s'])))
-        self.Sensors.append(BasicSensor("freq_avg", int(response['SUMMARY'][0]['freq_avg'])))
-        self.Sensors.append(BasicSensor("Voltage", int(response['SUMMARY'][0]['Voltage'])))
-        self.Sensors.append(BasicSensor("Power", int(response['SUMMARY'][0]['Power'])))
-        self.Sensors.append(BasicSensor("Temperature", int(response['SUMMARY'][0]['Temperature'])))
-        self.Sensors.append(BasicSensor("Fan Speed Out", int(response['SUMMARY'][0]['Fan Speed Out'])))
-        self.Sensors.append(BasicSensor("Fan Speed In", int(response['SUMMARY'][0]['Fan Speed In'])))
-        self.Sensors.append(BasicSensor("Power Fanspeed", int(response['SUMMARY'][0]['Power Fanspeed'])))
-        self.Sensors.append(BasicSensor("Test", int(response['SUMMARY'][0]['Power Fanfspeed'])))
+        try:
+            self.Sensors.append(BasicSensor("MHS 5s",int(response['SUMMARY'][0]['MHS 5s'])))
+        except:
+            pass
+        try:
+            self.Sensors.append(BasicSensor("freq_avg", int(response['SUMMARY'][0]['freq_avg'])))
+        except:
+            pass
+        try:
+            self.Sensors.append(BasicSensor("Voltage", int(response['SUMMARY'][0]['Voltage'])))
+        except:
+            pass
+
+        try:
+            self.Sensors.append(BasicSensor("Power", int(response['SUMMARY'][0]['Power'])))
+        except:
+            pass
+
+        try:
+            self.Sensors.append(BasicSensor("Temperature", int(response['SUMMARY'][0]['Temperature'])))
+        except:
+            pass
+
+        try:
+            self.Sensors.append(BasicSensor("Fan Speed Out", int(response['SUMMARY'][0]['Fan Speed Out'])))
+        except:
+            pass
+
+        try:
+            self.Sensors.append(BasicSensor("Fan Speed In", int(response['SUMMARY'][0]['Fan Speed In'])))
+        except:
+            pass
+
+        try:
+            self.Sensors.append(BasicSensor("Power Fanspeed", int(response['SUMMARY'][0]['Power Fanspeed'])))
+        except:
+            pass
+
+        try:
+            self.Sensors.append(BasicSensor("Test", int(response['SUMMARY'][0]['Power Fanfspeed'])))
+        except:
+            pass
 
 
 class BasicSensor:
