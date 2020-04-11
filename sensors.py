@@ -192,11 +192,7 @@ class DHT11TemperatureSensor(BasicSensor):
             return -127
 
 
-#DS18 = DS18Sensor("Sensor1","28-030197945ffe")
-#CPU = CPUTempSensor("CPU1_temp")
-#HDD = HDDSpaceSensor("HDD1_space")
-#Internet = TCPDelaySensor("google delay","google.com")
-#DHT11= DHT11TemperatureSensor("DHT_temp",26)
+
 miner1 = WhatsMiner("miner1",'192.168.10.10','4028')
 for s in miner1.Sensors:
     print(s.name,s.value)
@@ -205,12 +201,6 @@ hw_module = Platform1("RPI",['28-030197945ffe','28-03029794645a', '28-030c97940c
 for s in hw_module.Sensors:
     print(s.name,s.value)
 
-
-#print (DS18.value)
-#print(CPU.value)
-#print(HDD.value)
-#print(Internet.value)
-#print(DHT11.value)
 
 
 

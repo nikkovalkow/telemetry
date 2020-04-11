@@ -15,7 +15,7 @@ def GetHDDSpace():
     except:
         print('Error GetHDDSpace()')
 
-def GetDS18List():
+
 
 
 
